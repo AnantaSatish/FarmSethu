@@ -1,0 +1,7 @@
+{
+  "name": "Copy of FarmSethu: Farm-to-Consumer Ecosystem",
+  "description": "A hyper-local marketplace connecting farmers, village coordinators, and consumers with a focus on pre-orders, subscriptions, and circular economy waste management.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
