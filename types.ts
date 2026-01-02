@@ -19,9 +19,23 @@ export interface User {
     lat: number;
     lng: number;
     address: string;
+    village?: string;
+    district?: string;
+    state?: string;
+    pincode?: string;
   };
   trustScore: number;
   avatar?: string;
+}
+
+export interface Review {
+  id: string;
+  farmerId: string;
+  customerId: string;
+  customerName: string;
+  rating: number;
+  comment: string;
+  date: string;
 }
 
 export interface Message {
@@ -47,6 +61,7 @@ export interface Farmer extends User {
   fertilizerCredits: number;
   wasteReducedKg: number;
   idVerified: boolean;
+  bio?: string;
 }
 
 export interface Produce {
@@ -60,6 +75,7 @@ export interface Produce {
   harvestDate: string;
   isOrganic: boolean;
   status: 'available' | 'sold_out' | 'unsold';
+  description?: string;
 }
 
 export interface Order {

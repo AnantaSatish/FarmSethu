@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { UserRole } from '../types';
-import { Leaf, Users, ShieldCheck, Map, ArrowRight } from 'lucide-react';
+import { Leaf, Users, ShieldCheck, Map, ArrowRight, ShoppingCart as CartIcon } from 'lucide-react';
 
 interface LandingProps {
   onLogin: (role: UserRole) => void;
@@ -9,12 +9,12 @@ interface LandingProps {
 
 const LandingPage: React.FC<LandingProps> = ({ onLogin }) => {
   return (
-    <div className="space-y-20 pb-20">
+    <div className="space-y-20 pb-20 animate-in fade-in duration-700">
       {/* Hero Section */}
       <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-emerald-950">
         <div className="absolute inset-0 opacity-40">
            <img 
-            src="https://picsum.photos/id/102/1920/1080" 
+            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
             className="w-full h-full object-cover grayscale" 
             alt="Farming Background" 
            />
@@ -26,7 +26,7 @@ const LandingPage: React.FC<LandingProps> = ({ onLogin }) => {
              <Leaf size={16}/> Reimagining Farm-to-Table
            </div>
            <h1 className="text-5xl md:text-7xl font-display font-bold text-white leading-tight">
-             FarmSethu <br/> <span className="text-emerald-400 italic">Local Farmers, Local Futures</span>
+             FarmSethu <br/> <span className="text-emerald-400 italic font-medium">Local Farmers, Local Futures</span>
            </h1>
            <p className="text-xl text-emerald-100/70 max-w-2xl mx-auto font-light leading-relaxed">
              A hyper-local ecosystem where farmers thrive, waste is minimized, and your food is harvested only after you order it.
@@ -68,14 +68,14 @@ const LandingPage: React.FC<LandingProps> = ({ onLogin }) => {
       </section>
 
       {/* User Roles Preview */}
-      <section className="bg-emerald-50 py-24">
+      <section className="bg-emerald-50 py-24 rounded-[4rem] mx-4">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-emerald-950 mb-4">Empowering the Entire Ecosystem</h2>
           <p className="text-emerald-800/60 mb-16 max-w-xl mx-auto">Different roles working together for a healthier, more sustainable community.</p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <RoleCard role={UserRole.FARMER} icon={<Leaf />} desc="Direct-to-consumer sales, AI advisory, and fertilizer credits." onLogin={onLogin}/>
-            <RoleCard role={UserRole.CUSTOMER} icon={<ShoppingCart />} desc="Fresh harvests, subscriptions, and local discovery." onLogin={onLogin}/>
+            <RoleCard role={UserRole.CUSTOMER} icon={<CartIcon />} desc="Fresh harvests, subscriptions, and local discovery." onLogin={onLogin}/>
             <RoleCard role={UserRole.AGENT} icon={<Users />} desc="Village-level logistics and farmer coordination." onLogin={onLogin}/>
             <RoleCard role={UserRole.ADMIN} icon={<ShieldCheck />} desc="Platform governance and data-driven sustainability." onLogin={onLogin}/>
           </div>
@@ -84,10 +84,6 @@ const LandingPage: React.FC<LandingProps> = ({ onLogin }) => {
     </div>
   );
 };
-
-const ShoppingCart = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-);
 
 const Pillar: React.FC<{ icon: React.ReactNode; title: string; desc: string }> = ({ icon, title, desc }) => (
   <div className="space-y-4 p-8 rounded-3xl hover:bg-white hover:shadow-2xl hover:shadow-emerald-100 transition-all group">
@@ -98,7 +94,7 @@ const Pillar: React.FC<{ icon: React.ReactNode; title: string; desc: string }> =
 );
 
 const RoleCard: React.FC<{ role: UserRole; icon: React.ReactNode; desc: string; onLogin: (r: UserRole) => void }> = ({ role, icon, desc, onLogin }) => (
-  <div className="bg-white p-8 rounded-3xl shadow-sm border border-emerald-100 hover:border-emerald-500 transition-all text-left flex flex-col h-full group">
+  <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-emerald-100 hover:border-emerald-500 transition-all text-left flex flex-col h-full group">
     <div className="p-3 bg-emerald-50 rounded-2xl text-emerald-600 mb-6 w-fit group-hover:bg-emerald-600 group-hover:text-white transition-colors">
       {icon}
     </div>
@@ -108,7 +104,7 @@ const RoleCard: React.FC<{ role: UserRole; icon: React.ReactNode; desc: string; 
       onClick={() => onLogin(role)}
       className="text-emerald-600 font-bold text-sm hover:translate-x-1 transition-transform flex items-center gap-2"
     >
-      Login as {role} <ArrowRight size={14}/>
+      Log in as {role} <ArrowRight size={14}/>
     </button>
   </div>
 );

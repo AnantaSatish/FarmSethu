@@ -1,10 +1,9 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export const getCropAdvisory = async (crop: string, location: string) => {
   try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: `Provide sowing and harvesting advice for ${crop} in ${location}. Include soil tips and common pests. Keep it concise.`,
@@ -21,6 +20,7 @@ export const getCropAdvisory = async (crop: string, location: string) => {
 
 export const getDemandForecast = async (region: string) => {
   try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: `Predict demand for fruits and vegetables in ${region} for next week based on seasonality. Return a JSON object with crop names as keys and high/medium/low as values.`,
